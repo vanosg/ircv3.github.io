@@ -102,7 +102,7 @@ what to do if the authentication layer is disconnected or reconnected.
 IRC SASL authentication primarily uses the same mechanisms as SASL in other
 protocols. Most commonly:
 
-* [PLAIN](https://tools.ietf.org/search/rfc4616) as defined by RFC 4616
+* [PLAIN](https://tools.ietf.org/html/rfc4616) as defined by RFC 4616
 * [EXTERNAL](https://tools.ietf.org/html/rfc4422#appendix-A) as defined by RFC 4422
 * [SCRAM-SHA-256](https://tools.ietf.org/html/rfc7677) as defined by RFC 7677
 
@@ -222,8 +222,8 @@ and as such we detail them in their own section here.
 
 Here are the client-only tags the IRCv3 WG defines:
 
-* [The `channel-context` client-only tag]({{site.baseurl}}/specs/client-tags/channel-context.html) **[draft]** indicates the channel a private message should be displayed in.
-* [The `reply` client-only tag]({{site.baseurl}}/specs/client-tags/reply.html) **[draft]** marks that a given message is intended as a reply to a specific sent message.
+* [The `channel-context` client-only tag]({{site.baseurl}}/specs/client-tags/channel-context.html) indicates the channel a private message should be displayed in.
+* [The `reply` client-only tag]({{site.baseurl}}/specs/client-tags/reply.html) marks that a given message is intended as a reply to a specific sent message.
 * [The `react` client-only tag]({{site.baseurl}}/specs/client-tags/react.html) **[draft]** sends a reaction to a specific sent message, allowing such functionality from other chat systems.
 * [The `typing` client-only tag]({{site.baseurl}}/specs/client-tags/typing.html) lets users know when another user is typing a message in their channel or private message.
 
@@ -248,6 +248,17 @@ channels and see better information about what's going on.
 The [`invite-notify` spec]({{site.baseurl}}/specs/extensions/invite-notify.html)
 describes the new `INVITE` reply which this extension uses, and how clients
 interpret these notifications.
+
+
+## `ISUPPORT`
+
+The **work-in-progress** [`extended-isupport` spec]({{site.baseurl}}/specs/extensions/extended-isupport.html)
+allows clients to fetch the `ISUPPORT` metadata prior to connection
+registration, introduces a new command to fetch `ISUPPORT` and a new batch type
+to delimit `ISUPPORT` bursts.
+
+The **work-in-progress** [network icon spec]({{site.baseurl}}/specs/extensions/network-icon.html)
+introduces a new `ISUPPORT` token to advertise a network icon.
 
 
 ## [Labeled Responses]({{site.baseurl}}/specs/extensions/labeled-response.html)
@@ -286,11 +297,15 @@ The [`WHOX` spec]({{site.baseurl}}/specs/extensions/whox.html)
 describes how the `WHO` message and its replies changes with this capability active
 to allow clients to request more data, and how clients should interpret these changes.
 
-The **work-in-progress** [`no-implicit-names` spec]({{site.baseurl}}/specs/extensions/no-implicit-names.html)
+The [`no-implicit-names` spec]({{site.baseurl}}/specs/extensions/no-implicit-names.html)
 allows clients to disable the implicit `NAMES` responses sent after `JOIN` in
 case they don't always need that information for all channels. Clients can
 still query that information as needed via the `NAMES` or `WHO` command.
 
+The **work-in-progress** [`oper-tag` spec]({{site.baseurl}}/specs/extensions/oper-tag.html)
+defines a way for clients to receive a message tag on messages specifying that
+the source of the message is from an IRC operator. This is useful for letting
+users know that a message is from a trusted source.
 
 ## [Message IDs]({{site.baseurl}}/specs/extensions/message-ids.html)
 
@@ -306,6 +321,15 @@ clients should treat them.
 **Note:** Message IDs themselves are used as a foundation for other extensions
 and do not themselves offer any user-facing features. Specific IRCv3
 extensions will note their use of (and dependency on) message IDs.
+
+
+## [Metadata]({{site.baseurl}}/specs/extensions/metadata.html)
+
+The **work-in-progress** [`metadata-2`]({{site.baseurl}}/specs/extensions/metadata.html)
+specification is a framework to associate information to users. It succeeds
+the v3.2 `METADATA` command, which was found to have issues related to rate-limiting
+and excessive notifications, which made it impossible for servers in widespread
+use to implement.
 
 
 ## [Monitor]({{site.baseurl}}/specs/extensions/monitor.html)
@@ -394,7 +418,7 @@ keep in mind while implementing this feature.
 
 ## [WebSocket]({{site.baseurl}}/specs/extensions/websocket.html)
 
-The **work-in-progress** [WebSocket spec]({{site.baseurl}}/specs/extensions/websocket.html)
+The [WebSocket spec]({{site.baseurl}}/specs/extensions/websocket.html)
 describes conventions for transporting IRC lines over the WebSocket protocol.
 This is necessary for browser-based clients, which cannot make conventional
 TCP connections to IRC servers.
@@ -408,15 +432,6 @@ TCP connections to IRC servers.
 These extensions have been explicitly **deprecated**. We no longer recommend
 implementing them. Generally, these extensions have either been superseded,
 or other major implementation issues have been discovered with them.
-
-
-## [v3.2 Metadata]({{site.baseurl}}/specs/core/metadata-3.2.html)
-
-The v3.2 `METADATA` command was found to have issues related to rate-limiting
-and excessive notifications, which made it impossible for servers in widespread
-use to implement. A new Metadata specification is being written to address
-these issues and overhaul the notification system, so we do not recommend
-implementing this spec.
 
 
 ## [STARTTLS]({{site.baseurl}}/specs/deprecated/tls.html)

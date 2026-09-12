@@ -24,6 +24,10 @@ stable:
       caps:
         - cap-notify
 
+    account-extban:
+      name: account-extban
+      description: Account Extended Ban
+      link: /specs/extensions/account-extban.html
     account-notify:
       name: account-notify
       description: account-notify Extension
@@ -104,11 +108,6 @@ stable:
       link: /specs/extensions/message-tags.html
       caps:
         - message-tags
-    metadata3.2:
-      name: Metadata v3.2
-      description: Metadata v3.2 [DEPRECATED]
-      link: /specs/core/metadata-3.2.html
-      deprecated: true
     monitor:
       name: Monitor
       description: Monitor
@@ -127,6 +126,12 @@ stable:
       link: /specs/extensions/multi-prefix.html
       caps:
         - multi-prefix
+    no-implicit-names:
+      name: no-implicit-names
+      description: Disable implicit NAMES responses
+      link: /specs/extensions/no-implicit-names.html
+      caps:
+        - no-implicit-names
     sasl-3.1:
       name: SASL v3.1
       description: SASL v3.1
@@ -181,7 +186,6 @@ stable:
       description: UTF8ONLY ISUPPORT token
       link: /specs/extensions/utf8-only.html
       hide-if-no-support: true
-      hide-on-servers: true
       isupport:
         - UTF8ONLY
     webirc:
@@ -201,6 +205,22 @@ stable:
       isupport:
         - WHOX
 
+    channel-context-client-tag:
+      name: +channel-context
+      description: Channel context client tag
+      link: /specs/client-tags/channel-context.html
+      hide-if-no-support: true
+      tags:
+        - +channel-context
+
+    reply-client-tag:
+      name: +reply
+      description: Reply client tag
+      link: /specs/client-tags/reply.html
+      hide-if-no-support: true
+      tags:
+        - +reply
+
     typing-client-tag:
       name: +typing
       description: Typing client tag
@@ -209,13 +229,6 @@ stable:
       tags:
         - +typing
 
-    account-extban:
-      name: draft/account-extban
-      description: Account Extended Ban DRAFT
-      link: /specs/extensions/account-extban.html
-      draft: true
-      caps:
-        - draft/account-extban
     account-registration:
       name: draft/account-registration
       description: Account Registration DRAFT
@@ -232,6 +245,44 @@ stable:
       caps:
         - draft/channel-rename
 
+    client-batch:
+      name: client-batch
+      description: Client initiated batch Extension
+      link: /specs/extensions/client-batch.html
+      draft: true
+
+    chathistory:
+      name: draft/chathistory
+      description: CHATHISTORY Extension DRAFT
+      link: /specs/extensions/chathistory.html
+      draft: true
+      caps:
+        - draft/chathistory
+
+    extended-isupport:
+      name: draft/extended-isupport
+      description: extended-isupport Extension DRAFT
+      link: /specs/extensions/extended-isupport.html
+      draft: true
+      caps:
+        - draft/extended-isupport
+
+    message-redaction:
+      name: draft/message-redaction
+      description: Message redaction DRAFT
+      link: /specs/extensions/message-redaction.html
+      draft: true
+      caps:
+        - draft/message-redaction
+
+    metadata:
+      name: Metadata
+      description: Metadata
+      link: /specs/extensions/metadata.html
+      draft: true
+      caps:
+        - draft/metadata-2
+
     multiline:
       name: draft/multiline
       description: Multiline messages DRAFT
@@ -242,44 +293,19 @@ stable:
       tags:
         - draft/multiline-concat
 
-    chathistory:
-      name: draft/chathistory
-      description: CHATHISTORY Extension DRAFT
-      link: /specs/extensions/chathistory.html
+    network-icon:
+      name: draft/network-icon
+      description: Network Icon DRAFT
+      link: /specs/extensions/network-icon.html
+      draft: true
+
+    pre-away:
+      name: draft/pre-away
+      description: AWAY during connection registration
+      link: /specs/extensions/pre-away.html
       draft: true
       caps:
-        - draft/chathistory
-
-    message-redaction:
-      name: draft/message-redaction
-      description: Message redaction DRAFT
-      link: /specs/extensions/message-redaction.html
-      draft: true
-      caps:
-        - draft/message-redaction
-
-    react-client-tag:
-      name: +draft/react
-      description: React client tag DRAFT
-      link: /specs/client-tags/react.html
-      draft: true
-      tags:
-        - +draft/react
-    reply-client-tag:
-      name: +draft/reply
-      description: Reply client tag DRAFT
-      link: /specs/client-tags/reply.html
-      draft: true
-      tags:
-        - +draft/reply
-
-    channel-context-client-tag:
-      name: +draft/channel-context
-      description: Channel context client tag DRAFT
-      link: /specs/client-tags/channel-context.html
-      draft: true
-      tags:
-        - +draft/channel-context
+        - draft/pre-away
 
     read-marker:
       name: draft/read-marker
@@ -289,21 +315,24 @@ stable:
       caps:
         - draft/read-marker
 
-    no-implicit-names:
-      name: draft/no-implicit-names
-      description: Disable implicit NAMES responses DRAFT
-      link: /specs/extensions/no-implicit-names.html
+    react-client-tag:
+      name: +draft/react
+      description: React and unreact client tags DRAFT
+      link: /specs/client-tags/react.html
       draft: true
-      caps:
-        - draft/no-implicit-names
+      tags:
+        - +draft/react
+        - +draft/unreact
 
-    pre-away:
-      name: draft/pre-away
-      description: AWAY during connection registration
-      link: /specs/extensions/pre-away.html
+    oper-tag:
+      name: draft/oper-tag
+      description: oper-tag Extension DRAFT
+      link: /specs/extensions/oper-tag.html
       draft: true
       caps:
-        - draft/pre-away
+        - draft/oper-tag
+      tags:
+        - draft/oper
 
 proposed:
   name: Proposed Pull Requests

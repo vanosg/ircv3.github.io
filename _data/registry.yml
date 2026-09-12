@@ -54,6 +54,41 @@
       description: Indicates to a client that their monitor list is full
       specs:
         - monitor
+    - numeric: "760"
+      name: RPL_WHOISKEYVALUE
+      description: Provides user metadata within a `WHOIS` response
+      specs:
+        - metadata
+    - numeric: "761"
+      name: RPL_KEYVALUE
+      description: Provides user metadata as a response to a `METADATA` command, or to notify a user's metadata changed
+      specs:
+        - metadata
+    - numeric: "766"
+      name: RPL_KEYNOTSET
+      description: Indicates lack of te requested kind of user metadata as a response to a `METADATA` command, or a notification it was deleted
+      specs:
+        - metadata
+    - numeric: "770"
+      name: RPL_METADATASUBOK
+      description: Indicates success of the `METADATA SUB` command
+      specs:
+        - metadata
+    - numeric: "771"
+      name: RPL_METADATAUNSUBOK
+      description: Indicates success of the `METADATA UNSUB` command
+      specs:
+        - metadata
+    - numeric: "772"
+      name: RPL_METADATASUBS
+      description: Lists metadata keys a client is currently subscribed to, as a response to `METADATA SUBS`
+      specs:
+        - metadata
+    - numeric: "774"
+      name: RPL_METADATASYNCLATER
+      description: Indicates that metadata cannot currently be sent, as a reply to a `JOIN` or `METADATA SYNC` command. The client should request `METADATA SYNC` later
+      specs:
+        - metadata
     - numeric: "900"
       name: RPL_LOGGEDIN
       description: Indicates that the client is logged in
@@ -158,6 +193,10 @@
       specs:
         - chathistory
       description: Lets clients request JOIN/MODE/etc messages as part of history.
+    - name: extended-isupport
+      specs:
+        - extended-isupport
+      description: Enables clients to request ISUPPORT before connection registration.
     - name: extended-join
       specs:
         - extended-join
@@ -182,10 +221,10 @@
       specs: 
         - message-tags
       description: Allows clients and servers to use tags more broadly
-    - name: metadata
+    - name: metadata-2
       specs:
-        - metadata-3.2
-      description: Lets clients store metadata about themselves with the server, for other clients to request and retrieve later.
+        - metadata
+      description: Lets clients store metadata about themselves with the server, for other clients to request, retrieve, and be notified later later.
     - name: monitor
       specs:
         - monitor
@@ -272,6 +311,10 @@
       specs:
         - react-client-tag
       description: Sends a reaction to a specific sent message.
+    - name: +unreact
+      specs:
+        - react-client-tag
+      description: Removes a reaction from a specific sent message.
     - name: +reply
       specs:
         - reply-client-tag
@@ -284,6 +327,10 @@
       specs:
         - channel-context-client-tag
       description: Indicates the channel a private message should be displayed in.
+    - name: oper
+      specs:
+        - oper-tag
+      description: Indicates that the source of the message is an IRC operator.
 
 - name: Batches
   include_numeric: false
@@ -309,6 +356,11 @@
       specs:
         - netsplitjoin-batch
       description: Indicates that the given clients are quitting as the result of a netsplit (two servers disconnecting).
+
+    - name: isupport
+      specs:
+        - extended-isupport
+      description: Indicates that the given messages belong to a single ISUPPORT burst.
 
 - name: Messages
   include_numeric: false
@@ -343,13 +395,17 @@
       specs: 
         - invite-notify
       description: Not defined by IRCv3 but extended to alert other clients that someone's been invited to one of their channels.
+    - name: ISUPPORT
+      specs:
+        - extended-isupport
+      description: Requests ISUPPORT server information.
     - name: JOIN
       specs: 
         - extended-join
       description: Not defined by IRCv3 but extended to include usernames and hostnames.
     - name: METADATA
       specs: 
-        - metadata-3.2
+        - metadata
       description: Lets clients store metadata about themselves with the server, for other clients to request and retrieve later.
     - name: MONITOR
       specs: 
@@ -427,3 +483,8 @@
       specs:
         - whox
       description: Indicates the server supports the extended WHO syntax
+
+    - name: ICON
+      specs:
+        - network-icon
+      description: Advertises a server icon.

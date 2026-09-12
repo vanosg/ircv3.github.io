@@ -51,7 +51,8 @@
     </thead>
     <tbody>
         {% assign sw_index = 0 %}
-        {% for sw in type.software %}
+        {% assign sorted_software = type.software | sort_natural: "name" %}
+        {% for sw in sorted_software %}
         {% assign sw_index = sw_index | plus: 1 %}
         {% if sw_index < popup_above_after %}
             {% assign popup_above = false %}
@@ -69,8 +70,11 @@
                 {% if sw.note %}
                     <div class="sw-note">{{ sw.note | markdownify }}</div>
                 {% endif %}
-                {% if sw.os %}
+                {% if sw.os or sw.ai %}
                     <div class="os-support">
+                    {% if sw.ai %}
+                         <i title="Development assisted using AI" class="fa-solid fa-robot ai-assisted"></i>
+                    {% endif %}
                     {% for name in sw.os %}
                         {% if site.data.os[name] %}
                             <i title="{{ site.data.os[name]["name"] }}" class="{{ site.data.os[name]["icon"] }} os-support-{{ name | slugify }}"></i>

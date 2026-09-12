@@ -1,5 +1,17 @@
 - name: Servers
   software:
+    - name: Codename IRCat
+      link: https://ircat.xyz
+      support:
+        stable:
+          account-tag:
+          cap-3.1:
+          cap-3.2:
+          server-time:
+          webirc:
+        partial:
+          stable:
+            away-notify: Draft
     - name: Ergo
       # ref: https://ergo.chat/specs.html
       link: https://ergo.chat/
@@ -24,11 +36,11 @@
           labeled-response:
           message-redaction:
           message-tags:
+          metadata: Git
           monitor:
           msgid:
           multi-prefix:
           multiline:
-          no-implicit-names:
           pre-away:
           read-marker:
           sasl-3.1:
@@ -45,6 +57,10 @@
       na:
         stable:
           starttls: supports sts
+      partial:
+        stable:
+          no-implicit-names: "draft cap"
+
     - name: IRCCloud Teams
       # maintainer: jwheare
       link: https://blog.irccloud.com/private-teams-servers/
@@ -98,6 +114,7 @@
       link: https://www.inspircd.org
       support:
         stable:
+          account-extban: 4.10.0+
           account-notify:
           account-tag:
           away-notify:
@@ -111,6 +128,7 @@
           extended-join:
           extended-monitor:
           invite-notify:
+          no-implicit-names: 4.10.0+
           labeled-response:
           message-tags:
           monitor:
@@ -123,10 +141,54 @@
           standard-replies:
           starttls:
           sts:
+          utf8only: 4.10.0+
           userhost-in-names:
           webirc:
           websockets:
           whox:
+    - name: ircu2
+      link: https://github.com/UndernetIRC/ircu2
+      support:
+        stable:
+          account-notify:
+          away-notify:
+          cap-3.1:
+          cap-3.2:
+          cap-notify:
+          chghost:
+          echo-message:
+          extended-join:
+          invite-notify:
+          message-tags:
+          userhost-in-names:
+          sasl-3.1:
+          sasl-3.2:
+          server-time:
+          webirc:
+          websockets:
+          whox:
+    - name: juno
+      # ref: $mod->register_capability() calls in https://github.com/cooper/juno/search?q=$mod->register_capability
+      link: https://github.com/cooper/juno
+      support:
+        stable:
+          account-notify:
+          account-tag:
+          away-notify:
+          batch:
+          cap-3.1:
+          cap-3.2:
+          cap-notify:
+          chghost:
+          echo-message:
+          extended-join:
+          standard-replies:
+          userhost-in-names:
+          utf8only:
+          whox:
+      partial:
+        stable:
+          message-tags: "not sent over S2S"
     - name: Nefarious IRCu
       # ref: https://github.com/evilnet/nefarious2/blob/2.0/ircd/m_cap.c#L59
       link: https://github.com/evilnet/nefarious2
@@ -154,7 +216,7 @@
         stable:
           webirc:
     - name: Solanum
-      # ref: https://github.com/solanum-ircd/solanum/search?q=MAPI_CAP_CLIENT
+      # ref: https://github.com/solanum-ircd/solanum/search?q=%28"capability_put%28cli_capindex"+OR+MAPI_CAP_CLIENT%29
       link: https://github.com/solanum-ircd/solanum
       support:
         stable:
@@ -167,38 +229,22 @@
           account-notify:
           account-tag:
           away-notify:
+          batch: 2026-01-21
           chghost:
           echo-message:
           extended-join:
           invite-notify:
+          labeled-response: 2026-05-12
+          message-tags: 2025-10-10
           monitor:
+          msgid: 2025-10-10
           multi-prefix:
+          no-implicit-names: 2026-03-19
           server-time:
           starttls:
           userhost-in-names:
           webirc:
           whox:
-    - name: txircd
-      link: https://github.com/ElementalAlchemist/txircd
-      support:
-        stable:
-          cap-3.1:
-          cap-3.2:
-          cap-notify:
-          account-notify:
-          account-tag:
-          away-notify:
-          batch:
-          chghost:
-          echo-message:
-          extended-join:
-          invite-notify:
-          metadata:
-          monitor:
-          multi-prefix:
-          server-time:
-          starttls:
-          userhost-in-names:
     - name: UnrealIRCd
       # ref: ClientCapabilityAdd() calls in https://github.com/unrealircd/unrealircd/search?q=ClientCapabilityAdd
       #      (src/modules/m_cap.c has four matches, two not shown)
@@ -210,21 +256,24 @@
           account-tag:
           away-notify:
           batch:
+          bot-mode:
           cap-3.1:
           cap-3.2:
           cap-notify:
           chghost:
           chathistory:
           echo-message:
+          extended-isupport: 6.2+
           extended-join:
-          extended-monitor: Git
+          extended-monitor: 6.0+
           invite-notify: 6.0+
           labeled-response:
           message-tags:
           monitor: 6.0+
           msgid:
           multi-prefix:
-          no-implicit-names: 6.1.5+
+          multiline: 6.2.4+
+          network-icon: 6.2.2+
           sasl-3.1:
           sasl-3.2:
           server-time:
@@ -233,11 +282,14 @@
           starttls:
           sts:
           userhost-in-names:
+          utf8only: 6.2+
           webirc:
           websockets:
           whox:
       partial:
         stable:
           account-registration: "6.0+ add-on"
-          bot-mode: Draft
+          channel-rename: "6.1+ add-on"
           message-redaction: "6.0+ add-on"
+          metadata: "6.1+ add-on"
+          no-implicit-names: "draft cap"

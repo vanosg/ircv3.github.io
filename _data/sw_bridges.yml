@@ -1,5 +1,15 @@
 - name: Bridges
   software:
+    - name: Biboumi
+      link: https://biboumi.codeberg.page/
+      support:
+        stable:
+          multi-prefix: 3.0+
+          cap-3.1: 3.0+
+          sasl-3.1: 9.0+
+          webirc: 3.0+
+        SASL:
+          plain: 9.0+
     - name: BitlBee
       # ref: https://github.com/bitlbee/bitlbee/blob/3.6/irc_cap.c#L39
       link: https://bitlbee.org/
@@ -39,6 +49,26 @@
           channel-context-client-tag:
           chghost:
           userhost-in-names:
+    - name: j2i
+      # ref: https://foundry.fsky.io/telepath/j2i/src/branch/main/src/j2i/irc/client.py#L508-L557
+      link: https://telepath.im/projects/j2i/
+      support:
+        stable:
+          cap-3.1:
+          cap-3.2:
+          away-notify:
+          batch:
+          echo-message:
+          message-tags:
+          msgid:
+          multiline:
+          bot-mode:
+          sasl-3.1:
+          react-client-tag:
+          reply-client-tag:
+          typing-client-tag:
+        SASL:
+          - plain
     - name: matrix-appservice-irc
       # ref: https://github.com/matrix-org/node-irc/blob/1.5.0/src/irc.ts#L339-L352
       #      https://github.com/matrix-org/node-irc/blob/1.5.0/src/irc.ts#L1199
@@ -77,16 +107,18 @@
           message-tags:
           msgid:
           multiline:
-          no-implicit-names:
           sasl-3.1:
           server-time:
           standard-replies:
           userhost-in-names:
           utf8only:
           react-client-tag:
-          reply-client-tag:
         SASL:
             - plain
+      partial:
+        stable:
+          no-implicit-names: "draft cap"
+          reply-client-tag: "draft cap"
       na:
         stable:
           account-notify:
